@@ -186,4 +186,131 @@
 //    (a % 2 === 0)? console.log(a):'';
 // }
 
-//Task 14
+// //Task 14
+//
+// let i = 0;
+//
+// while (i<3){
+//     alert(`number ${i}!`);
+//     i++;
+// }
+
+// //Task 15                                                                   - if text??????????????????????????????
+//
+// // let number = +prompt("Enter a number after 100", "55");
+// //
+// // while (number<=100 && number !== 0){
+// //     number = +prompt("Enter a number after 100", "555");
+// // }
+//
+// do{
+//     number = +prompt("Enter a number over 100", "-999");
+// }while (number<=100 && number !== 0);
+
+// //Task 16                                                                        - to try another way
+//
+// let start = prompt("Enter a start number!", 1);
+// let finish = prompt("Enter a finish number!", 10);
+//
+// for (start; start<=finish; start++){
+//     if (start === 2 || start === 3 || start === 5 || start === 7) {
+//         console.log(start);
+//     } else if (start !== 1 && start % 2 !== 0) {
+//         if (start % 3) {
+//             if (start % 5) {
+//                 if (start % 7) {
+//                     console.log(start);
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// //Task 17
+//
+// // let first = +prompt("First = ", 5);
+// // let second = +prompt("Second = ", 20);
+// // console.log(first, second, first+second, (first+second)/2);
+//
+// console.log(((+prompt("First = ", 5)) + (+prompt("Second = ", 20))) / 2);
+
+// //Task 18
+//
+// console.log(prompt("Number = ", 5)**2);
+
+// //Task 19
+//
+// let first = +prompt("First = ", 5);
+// let second = +prompt("Second = ", 1);
+// let third = +prompt("Third = ", 9);
+//
+// console.log(Math.max(first,second,third) - Math.min(first,second,third));
+
+// //Task 20
+//
+// console.log((+prompt("Number = ", -4)%2 === 0)? "Even" : "Odd");
+
+// //Task 21
+//
+// let number  = prompt("Number = ", 66);
+// let length =  number.length;
+// let j = 0;
+//
+// console.log(length);
+//
+// for (i = 0; i<length; i++){
+//     j = j+(+number[i]);
+// }
+//
+// console.log(j);
+
+// //Task 22
+//
+// let unit = +prompt("Do you want to convert inches to the centimeters( - Type 1 - ) or centimeters to the inches ( - Type 0 - )",0);
+//
+// switch (unit){
+//     case 0 :
+//         ci = (+prompt("Type a centimeters!",5))/2.54;
+//         alert(ci.toFixed(2));
+//         break;
+//     case 1 :
+//         ic = (+prompt("Type a inches!",5))*2.54;
+//         alert(ic.toFixed(2));
+//         break;
+//     default :
+//         alert("You have typed incorrect unit! Try again!")
+// }
+
+// //Task 23
+//
+// let number = prompt("Number = ", 333);
+//
+// number % 2 === 0 ? console.log((+number[0])+(+number[1])+(+number[2])) : console.log((+number[0])*(+number[1])*(+number[2]));
+
+// //Task 24
+//
+// let a = prompt("Side a = ", 5);
+// let b = prompt("Side b = ", 5);
+// let c = prompt("Side c = ", 5);
+//
+// if (+a + +b > +c && +a + +c > +b && +b + +c > +a) {
+//     console.log("The triangle exist!")
+// } else {
+//     console.log("The triangle doesn\'t exist!")
+// }
+
+// //Task 25
+//
+// let AX = prompt("X of A = ", 4);
+// let AY = prompt("Y of A = ", 9);
+// let Radius = prompt("Radius of circle = ", 10);
+//
+// if ((Math.sqrt(AX - 0) + Math.sqrt(AY - 0)) < Math.sqrt(Radius)) {
+//     console.log("In circle");
+// } else if ((Math.sqrt(AX - 0) + Math.sqrt(AY - 0)) === Math.sqrt(Radius)) {
+//     console.log("On circle");
+// } else {
+//     console.log("Out of circle");
+// }
+
+//Task 26
