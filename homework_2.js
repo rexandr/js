@@ -141,18 +141,49 @@
 // }
 //
 //switch (x) {
-    // case 1 :
-    //     console.log(y, "Single");
-    //     break;
-    // case 2 :
-    //     console.log(y, "Double");
-    //     break;
-    // case 3 :
-    //     console.log(y, "Triple");
-    //     break;
-    // default :
-    //     console.log("Out of range");
+// case 1 :
+//     console.log(y, "Single");
+//     break;
+// case 2 :
+//     console.log(y, "Double");
+//     break;
+// case 3 :
+//     console.log(y, "Triple");
+//     break;
+// default :
+//     console.log("Out of range");
 // }
 
-//Task 11
+// //Task 11
+//
+// //There will be printed different values at loop's output. Because the last value will be increased then matched in first case
+// // and value will be matched then increased in second case.
+//
+// let i = 0;
+// while (++i < 5) alert( i );
+//
+// let j = 0;
+// while (j++ < 5) alert( j );
 
+// //Task 12
+//
+// //There will be the same values at loop's output. Because there no difference how i will be increased(pos/prefix form).
+// //Values will be set up before checking value in both cases.
+//
+// for (let i=0; i<5; i++) alert(i)
+// for (let i=0; i<5; ++i) alert(i)
+
+// //Task 13
+//
+// let a = prompt("Start =", "1");
+// let b = prompt("Finish =", "10");
+//
+// // for (; (a <= b && (a % 2 === 0)); a++) {      // I don't understand why it doesn't work(((
+// //     console.log(a);
+// // }
+//
+// for (; (a <= b ); a++) {
+//    (a % 2 === 0)? console.log(a):'';
+// }
+
+//Task 14
