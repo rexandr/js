@@ -313,4 +313,49 @@
 //     console.log("Out of circle");
 // }
 
-//Task 26
+// //Task 26
+//
+// user = {};
+// user.name = "John";
+// user.surname = "Smith";
+// console.log(user);
+// user.name = "Pete";
+// console.log(user);
+// delete user.name;
+// console.log(user);
+
+// //Task27
+//
+// const user = {
+//     name: "John"
+// };
+// user.name = "Pete"; // Yes, it works. CONST set user's name as only read, but object's properties can be changed.
+// console.log(user);
+
+// //Task 28
+//
+// let salaries = {
+//     John: 100,
+//     Ann: 160,
+//     Pete: 130
+// }
+//
+// summ = 0;
+//
+// for (let key in salaries){
+//     summ += salaries[key];
+// }
+//
+// console.log(summ);
+
+// //Task 29
+//
+// let i = 0;
+// while (i != 10) {
+//
+//     //if (i>20){break;}
+//     i += 0.2;
+//     console.log(i);
+// }
+// //It will be infinity loop because there are fractions in statements and as a result of operation we have a number
+// // with a lot of symbols after dot point. Instead 10 we will get a number like 10.199999999996 and so on.
