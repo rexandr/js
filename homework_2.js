@@ -11,7 +11,7 @@
 // let A = prompt("A=", "1");
 // let B = prompt("B=", "2");
 // let C = prompt("C=", "3");
-//
+// let D=(+A)+(+B)+(+C);
 // if (A < B && B < C) {
 //     A *= 2;
 //     B *= 2;
