@@ -1,5 +1,49 @@
+// //Task 1
+//
+// let arr = [];
+// isEmpty(arr);
+//
+// function isEmpty(obj){
+//     obj[0]!==undefined?console.log(true):console.log(false);
+//     obj.length>0?console.log(true):console.log(false);
+// }
 
+// //Task 2
+//
+// let object = {
+//     a:5,
+//     b:6,
+//     c:'dsfgdf',
+//     d:8
+// };
+//
+// function multiplyNumeric(obj1){
+//
+//     for (let key in obj1) {
+//         console.log(typeof key);
+//     }
+//
+//     // size = Object.keys(obj1).length;
+//     // for (let i=0;i<size;i++){
+//     //     console.log(typeof obj1[i]);
+//     // }
+//
+// }
+//
+// multiplyNumeric(object);
 
+// //Task 3
+//
+// function readNumber() {
+//     do{
+//         a = +prompt("Enter a number!",5);
+//         console.log(a);
+//     }while (a === NaN);
+//
+//     return a;
+// }
+//
+// alert(readNumber());
 
 // //Task 4
 //
