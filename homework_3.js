@@ -89,5 +89,116 @@
 // console.log(checkSpam('free xxxxx'));
 // console.log(checkSpam("innocent rabbit"));
 
-//Task 8
+// //Task 8
+//
+//
+// function truncate(str, maxlength) {
+//     str.length > maxlength ? str = str.slice(0, 19) + '...' : str;
+//     return str;
+// }
+//
+// alert(truncate('Are you ready to slice this string or no?', 20));
+
+// //Task 9
+// //
+// // function extractCurrencyValue(str) {
+// //     j = '';
+// //     for (let i = 0; i < str.length; i++) {
+// //         let a = null;
+// //         (+str[i] >= 0) ? a = str[i] : a;
+// //         j = a !== null ? j + a : '';
+// //     }
+// //
+// //     //or simpler if there wouldn't be something like "$120 of tugrikas"
+// //
+// //     let b = str.slice(1);
+// //
+// //     return +j + ' or simpler ' + b;
+// // }
+// //
+// // alert(extractCurrencyValue('$120'));
+
+// //Task 10
+//
+// function sumInput() {
+//
+//     // let a = prompt('Enter a number', 5);
+//     // let b = [];
+//     // while (a !== 0 || a !== ''|| a !== null) {
+//     //     b.push(a);
+//     //     console.log(b);
+//     //     a = prompt('Enter a number', 5);
+//     // }
+//
+//
+//     let a = 0;
+//     let b = [];
+//     let c = 0;
+//     do {
+//         a = prompt('Enter a number', 5);
+//         console.log(a);
+//         if (a === 0 || a === '' || a === null) {
+//             break;
+//         } else if (+a === NaN) {
+//             break;
+//         }
+//         b.push(a);
+//         console.log(b);
+//     } while (a != 999);
+//
+//     for (let i=0; i<b.length; i++){
+//         c += +b[i];
+//     }
+//     console.log(c);
+// }
+//
+// sumInput();
+
+
+//Task 11
+
+// I can't realize this topic also in internet hints.(((((( Maybe later.
+
+//Task 12
+
+//There no difference between those two ways. The code will be execute equal from up to down in both cases .
+
+// //Task 13
+//
+// function checkAge(age) {
+//    //return age > 18 ? true : confirm("Did parents allowed?");
+//     return age>18||confirm("Did parents allowed?");
+// }
+//
+// console.log(checkAge(13));
+
+// //Task 14
+//
+// function min(a, b) {
+//     return a > b ? b : a;
+// }
+//
+// console.log(min(2, 5));
+// console.log(min(3, -1));
+// console.log(min(1, 1));
+
+// //Task 15
+//
+// function pow(x,n) {
+//
+//     if (x<1||n<1){
+//         return false;
+//     }
+//
+//     let j=1;
+//     for (let i=1; i<=Math.floor(n);i++){
+//         j=j*Math.floor(x);
+//     }
+//
+//     return j;
+// }
+//
+// console.log(pow(3,3));
+
+//Task 16
 
