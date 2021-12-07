@@ -200,5 +200,52 @@
 //
 // console.log(pow(3,3));
 
-//Task 16
+// //Task 16
+//
+// let ask = (a = confirm('Are you agree?')) => a === true ? "Agreed" : "Disagreed";
+// console.log(ask());
+
+// //Task 17
+//
+// function kruzo(income, costs, purchase) {
+//     let stock = 0;
+//     let i = 1;
+//
+//     // for (; (+stock) >= (+purchase); i++) {
+//     //     stock += (+(income - costs));
+//     //     console.log(stock, income, costs, purchase);
+//     // }
+//
+//     for (; i>=0; i++) {
+//         stock += (+(income - costs));
+//         //stock>=purchase ? return i: '';
+//
+//         if (stock>=purchase){
+//             return 'I will earn enough money in '+ i +' months';
+//         }
+//     }
+//
+//     return false;
+// }
+//
+// alert(kruzo(3333, 1750, 8000));
+
+// //Task 18
+//
+// function askNumber(){
+//     let a = 0;
+//     let b = 0;
+//     for (let i=1; i<=10;i++){
+//         a= +prompt('Enter a number!', -5);
+//         a<0 ? b += a:'';
+//     }
+//     return b;
+// }
+// alert(askNumber());
+
+//Task 19
+
+// There 4 will be shown because "shoppingCart" refer to the same part of memory that "fruits" does.
+
+//Task 20
 
