@@ -4,11 +4,11 @@
 // isEmpty(arr);
 //
 // function isEmpty(obj){
-//     obj[0]!==undefined?console.log(true):console.log(false);
-//     obj.length>0?console.log(true):console.log(false);
+//     obj[0]!==undefined?console.log(false):console.log(true);
+//     obj.length>0?console.log(false):console.log(true);
 // }
 
-// //Task 2
+// //Task 2                                                                                        ???????????????
 //
 // let object = {
 //     a:5,
@@ -20,13 +20,12 @@
 // function multiplyNumeric(obj1){
 //
 //     for (let key in obj1) {
-//         console.log(typeof key);
-//     }
 //
-//     // size = Object.keys(obj1).length;
-//     // for (let i=0;i<size;i++){
-//     //     console.log(typeof obj1[i]);
-//     // }
+//         obj1[key] >= 0 ? obj1[key]*=2 : obj1[key];
+//
+//         //+obj1[key] !== NaN ? obj1[key]*=2 : obj1[key];
+//         console.log(obj1[key], typeof key);
+//     }
 //
 // }
 //
@@ -35,10 +34,17 @@
 // //Task 3
 //
 // function readNumber() {
+//
+//     let a = 0;
+//
 //     do{
-//         a = +prompt("Enter a number!",5);
-//         console.log(a);
-//     }while (a === NaN);
+//         a = prompt("Enter a number!",5);
+//
+//         if (a == 0){
+//             a = null;
+//         }
+//
+//     }while (typeof a === "string");
 //
 //     return a;
 // }
@@ -100,25 +106,25 @@
 // alert(truncate('Are you ready to slice this string or no?', 20));
 
 // //Task 9
-// //
-// // function extractCurrencyValue(str) {
-// //     j = '';
-// //     for (let i = 0; i < str.length; i++) {
-// //         let a = null;
-// //         (+str[i] >= 0) ? a = str[i] : a;
-// //         j = a !== null ? j + a : '';
-// //     }
-// //
-// //     //or simpler if there wouldn't be something like "$120 of tugrikas"
-// //
-// //     let b = str.slice(1);
-// //
-// //     return +j + ' or simpler ' + b;
-// // }
-// //
-// // alert(extractCurrencyValue('$120'));
+//
+// function extractCurrencyValue(str) {
+//     let j = '';
+//     for (let i = 0; i < str.length; i++) {
+//         let a = '';
+//         (+str[i] >= 0) ? a = str[i] : a;
+//         j = j + a;
+//     }
+//
+//     //or simpler if there wouldn't be something like "$120 of tugrikas"
+//
+//     let b = str.slice(1);
+//
+//     return j + ' or simpler ' + b;
+// }
+//
+// alert(extractCurrencyValue('$120jhfghj'));
 
-// //Task 10
+// //Task 10                                                                             ?????????????????????????????
 //
 // function sumInput() {
 //
@@ -135,9 +141,9 @@
 //     let b = [];
 //     let c = 0;
 //     do {
-//         a = prompt('Enter a number', 5);
-//         console.log(a);
-//         if (a === 0 || a === '' || a === null) {
+//         a = +prompt('Enter a number', 5);
+//         console.log(typeof a, a);
+//         if (a === 0 || a === '' || a === null || a ===NaN) {
 //             break;
 //         } else if (+a === NaN) {
 //             break;
@@ -155,7 +161,7 @@
 // sumInput();
 
 
-//Task 11
+//Task 11                                                                                   ???????????????????????
 
 // I can't realize this topic also in internet hints.(((((( Maybe later.
 
@@ -245,7 +251,29 @@
 
 //Task 19
 
-// There 4 will be shown because "shoppingCart" refer to the same part of memory that "fruits" does.
+// There 4 will be shown, because "shoppingCart" refer to the same part of memory that "fruits" does.
 
-//Task 20
+// //Task 20
+//
+// let styles = ['Jazz', 'Blues'];
+//
+// function mix() {
+//     styles.push('Rock-n-roll');
+//     let a = Math.floor(styles.length/2);
+//     a%2===0 ? (styles[a-1] = 'Classic'):styles[a] = 'Classic';
+//     alert(styles[0]);
+//     styles.shift();
+//     styles.unshift('Reggy');
+//     styles.unshift('Rap');
+//     return styles;
+// }
+//
+// alert(mix());
 
+// //Task 21
+//
+// let arr = ["a", "b"];
+// arr.push(function() {     //setting up function's text as value into array on 2-th position
+//     alert( this );        //sending object(array), because "this" called in it, to the alert as value and showing it
+// })
+// arr[2]();                 //running("()" - indicated, after array's position) function placed in this position
