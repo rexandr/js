@@ -158,58 +158,38 @@
 // sumInput();
 
 
-//Task 11                                                                                   ???????????????????????
-
-function getMaxSubSum(arr) {
-
-    let b = -1000000;
-    //b = Math.min(arr);   //NaN??????
-    let i = 0;
-    let d = 1;
-    let leng = arr.length;
-
-    console.log('length ' + ' ' + arr.length);
-
-    for (i; i < leng; i++) {
-
-        let c = 0;
-        let a = i
-        let j = leng - 1 - d;
-        d++;
-
-        for (; a < leng; a++) {
-            c += arr[a];
-            console.log('arr' + a + '=' + arr[a], 'c=' + c);
-        }
-        console.log('________a=' + a, 'c=' + c);
-        c > b ? b = c : c;
-        c = 0;
-        console.log('b=' + b, 'a= ' + a);
-
-        console.log('j=' + j);
-        for (j; j >= 0; j--) {
-            c += arr[j];
-            console.log('arr' + j + '=' + arr[j], 'c=' + c);
-        }
-        console.log('b=' + b, 'a= ' + a);
-        c > b ? b = c : c;
-
-        console.log(' ');
-        console.log(' ');
-        console.log(' ');
-        console.log(' ');
-        console.log('');
-        console.log('b=' + b, 'a= ' + a);
-    }
-
-    return b;
-}
-alert(getMaxSubSum([-1, 2, 3, -9]))// = 5 (сумма выделенных)
-alert(getMaxSubSum([2, -1, 2, 3, -9])) //= 6
-alert(getMaxSubSum([-1, 2, 3, -9, 11]))// = 11
-alert(getMaxSubSum([-2, -1, 1, 2]))// = 3
-alert(getMaxSubSum([100, -9, 2, -3, 5]))// = 100
-alert(getMaxSubSum([1, 2, 3]))// = 6 (берём все)
+// //Task 11                                                                                                  Done
+//
+// function getMaxSubSum(arr) {
+//
+//     let b = -1000000;
+//     //b = Math.min(arr);   //NaN??????
+//     let i = 0;
+//
+//     let leng = arr.length;
+//
+//     console.log('length ' + ' ' + arr.length);
+//
+//     for (i; i < leng; i++) {
+//
+//         let c = 0;
+//         let a = i;
+//
+//         for (; a < leng; a++) {
+//             c += arr[a];
+//             console.log('arr' + a + '=' + arr[a], 'c=' + c);
+//             c > b ? b = c : c;
+//         }
+//     }
+//
+//     return b;
+// }
+// alert(getMaxSubSum([-1, 2, 3, -9]))// = 5 (сумма выделенных)
+// alert(getMaxSubSum([2, -1, 2, 3, -9])) //= 6
+// alert(getMaxSubSum([-1, 2, 3, -9, 11]))// = 11
+// alert(getMaxSubSum([-2, -1, 1, 2]))// = 3
+// alert(getMaxSubSum([100, -9, 2, -3, 5]))// = 100
+// alert(getMaxSubSum([1, 2, 3]))// = 6 (берём все)
 
 
 //Task 12
