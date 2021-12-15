@@ -1,3 +1,9 @@
+
+
+//I had no enough time but I'm going to improve it soon.
+// It is  a little hard to figure it all from 0 and to combine with php.
+// I try to.
+
 // //Task 1                                                                                                 ************
 //
 //
@@ -55,29 +61,69 @@
 // function clear(elem) {
 //
 //     let cl = document.querySelectorAll(elem);
-//     cl.childNodes.remove();
+//     //cl.innerHTML = "";
+//     //cl.removeChild("<li></li>");
 //
+// console.log(elem)
+// console.log(cl)
 // }
-//
-// clear('#elem');
 
-//
+// clear('ol');
+
+
 // //Task 5
 //
 // function ask() {
 //
-//     let text = '';
+//     let text = prompt("Enter the value!", 'Vasya');
 //
-//     do {
-//         text = prompt("Enter the value!", null);
+//     let ul1 = document.querySelector("ul#task5");
 //
-//
-//         if (text !== 0 || text !== null || text !== '')
-//         {
-//             console.log(text);
+//     while (text)
+//     {
+//         if (text === null || text === ''){
+//             break;
 //         }
 //
-//     }while (text !== 0 || text !== null || text !== '')
+//         ul1.innerHTML += `<li>${text}</li><br>`;
+//
+//         text = prompt("Enter the value!", 'Petya');
+//     }
+//
 // }
 //
 // ask();
+
+
+// //Task 6
+//
+// function task6()
+// {
+//     let li1 = document.querySelector("li#one");
+//     let li4 = document.querySelector("li#two");
+//     // li1.append('<li>2</li><br>')
+//     // li1.append('<li>3</li><br>')
+//
+//     li1.insertAdjacentHTML('afterend','<li>2</li>')
+//     li4.insertAdjacentHTML('beforebegin','<li>3</li>')
+//
+// }
+//
+// task6();
+
+// //Task7
+//
+// function showNotification(options)
+// {
+//     let note = document.body.insertAdjacentHTML("afterbegin", `<div class="notification">${options}</div>`)
+//
+//     //setTimeout(()=>note.remove(), 1500); //it should work but not((((((((((
+//
+//
+//
+//     //setTimeout(()=>note.parentNode.removeChild(note), 1500);
+//     // setTimeout(()=>document.body.insertAdjacentHTML("afterbegin", `<div class="notification">${options}</div>`), 1500)
+//     // setTimeout(()=>document.body.insertAdjacentHTML("afterbegin", `<div class="notification">${options}</div>`).remove, 1500)
+// }
+//
+// showNotification('Hello');
