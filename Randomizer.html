@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Randomizer</title>
+</head>
+<body>
+<a href="index.html">HOME</a><br>
+
+FROM_<input type="number" id="from" value="12"><br>
+TO____<input type="number" id="to" value="90"><br>
+COUNT<input type="number" id="counter" value="8"><br>
+<button id="generate" onclick="generate()">GENERATE</button>
+
+<ul>
+
+</ul>
+
+<script>
+
+    function generate() {
+        let ul1 = document.querySelector("ul");
+        let from = document.body.querySelector('#from');
+        let to = document.body.querySelector('#to');
+        let counter = document.body.querySelector('#counter');
+       // let arr = [];
+
+        while (document.querySelector("li"))
+        {
+            document.querySelector("li").remove();
+        }
+
+        for (let i = 0; i < counter.value; i++)
+        {
+            let ran = (+from.value) + Math.random() * ((+to.value)+1-(+from.value));
+            ran = Math.floor(ran);
+            //arr[i] = Math.floor(ran);
+            //console.log(arr, counter, ran);
+
+            let elem = document.createElement("li");
+            let elemText = document.createTextNode(ran);
+            elem.appendChild(elemText);
+            ul1.appendChild(elem);
+        }
+    }
+
+</script>
+
+</body>
+</html>

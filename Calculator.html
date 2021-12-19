@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+</head>
+<body>
+<a href="index.html">HOME</a><br>
+<input type="text" name="" id="trash" value="1+2+3"><br>
+<button onclick="calculate()">CALCULATE</button>
+
+<script>
+    let str = document.body.querySelector('#trash');
+    let len = str.value.length;
+    let elem = str.value.split('');
+    let i= 0;
+
+
+    function calculate()
+    {
+        let a = 0;
+        let b = 0;
+        let c = '';
+
+        for (let i=0; i<str.value.length+2; i++)
+        {
+            //Number.isNaN(+ elem[i]) ? c = elem[i] : a =  +elem[i];
+
+            if (!Number.isNaN(+ elem[i]))   //elem[i]>=0
+            {
+                a = +elem[i];
+            }else{
+                c = elem[i];
+            }
+
+            if (a > 0 && c !=='')
+            {
+                b =+ a;
+                a = 0;
+                c = '';
+            }
+
+            console.log('a = ' + a + 'b = ' + b + 'c = ' +c, '----' + typeof a + typeof b + typeof c);
+        }
+
+
+        console.log(b);
+    }
+</script>
+
+</body>
+</html>
