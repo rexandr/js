@@ -85,11 +85,15 @@
 //             break;
 //         }
 //
-//         ul1.innerHTML += `<li>${text}</li><br>`;
+//         let elem = document.createElement("li");
+//         let elemText = document.createTextNode(text);
+//         elem.appendChild(elemText);
+//         ul1.appendChild(elem);
+//
+//         //ul1.innerHTML += `<li>${text}</li><br>`;
 //
 //         text = prompt("Enter the value!", 'Petya');
 //     }
-//
 // }
 //
 // ask();
@@ -115,9 +119,11 @@
 //
 // function showNotification(options)
 // {
+//
+//
 //     let note = document.body.insertAdjacentHTML("afterbegin", `<div class="notification">${options}</div>`)
 //
-//     //setTimeout(()=>note.remove(), 1500); //it should work but not((((((((((
+//     setTimeout(()=>document.querySelector('.notification').remove(), 1500);   //I have done it))))))
 //
 //
 //
