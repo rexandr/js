@@ -6,59 +6,107 @@
 </head>
 <body>
 <a href="index.html">HOME</a><br>
-<input type="text" name="" id="trash"><br>
+<input type="text" name="" id="trash" value="5+10+50%+9"><br>
 <button onclick="calculate()">CALCULATE</button>
 
 <script>
-    //let str = document.body.querySelector('#trash');
-    // let len = str.value.length;
-    // let elem = str.value.split('');
-    // let i= 0;
-
-
-    function calculate()
-    {
+ //____________________________________________________з дужками  - розпарсити дужки в масив,вирізати масив по дужках, якщо є,
+ // ___________________________________________________прогнати через рекурсію і вставити цифру
+ // ___________________________________________________в остаток першого масиву, а далі знову в рекурсію
+    function calculate() {
 
         let str = document.body.querySelector('#trash');
-        let len = str.value;
+        let val = str.value;
+        let arr = [];
+        let i = 0;
+
+        //console.log(eval(val));                         ))))))))))))))))))))))))
 
 
+        do {
+            console.log('________' + i, val);
+            let num = parseInt(val);
+            arr[i] = num;
+            i++;
+            let numLeng = num.toString().length;
+            val = val.slice(numLeng);
 
-        // let a = 0;
-        // let b = 0;
-        // let c = '';
-        //
-        // for (let i=0; i<str.value.length; i++) //str.value.lengt+2
-        // {
-        //     Number.isNaN(+ elem[i]) ? c += elem[i] : c +=  +elem[i];
-        //
-        //     // if (!Number.isNaN(+ elem[i]))   //elem[i]>=0
-        //     // {
-        //     //     a = +elem[i];
-        //     // }else{
-        //     //     c = elem[i];
-        //     // }
-        //     //
-        //     // if (a > 0 && c !=='')
-        //     // {
-        //     //     b =+ a;
-        //     //     a = 0;
-        //     //     c = '';
-        //     // }
-        //     //
-        //     // console.log('a = ' + a + 'b = ' + b + 'c = ' +c, '----' + typeof a + typeof b + typeof c);
-        // }
+            if (val[0] === '%') {
+                arr[i] = val[0];
+                i++;
+                val = val.slice(1);
+            }
+            console.log(i, val[0]);
 
-        // number = arr[0] + arr[1] + arr[2]....
-        // elem = [number, operation, number, operation, .....]
+            if (val.length > 0) {
+                arr[i] = val[0]
+                i++;
+                val = val.slice(1);
+            }
+            console.log('\nval = ' + val + typeof val + val.length + '\nnum=' + num + typeof num + '\nnumLeng = ' + numLeng + '\ni = ' + i + '\narr = ' + arr);
+    }while (val) ;
 
-        //result = var1||var2||var3
+    let counter = operate(arr,arr.length)
 
-        //parseInt - читають строку до помилки і видають число яке знайшли, обрізати і знову парсити, формувати масив...
+    alert(counter.toFixed(2));
+    }
 
-        //str.indexOf(substr, pos) - find substring from pos
+    function operate(arr, count) {
 
-        console.log(len, eval(len));  //`${+elem[0]  + elem[1] +  +elem[2]}`
+        if (count <= 0) {
+            return arr[0];
+        }
+
+        let percent = arr.indexOf("%");
+        if (percent > -1) {
+
+            if (count === 2 && arr[1] === '%'){
+
+                return arr[0]/100;
+            }
+            console.log(arr);
+
+            let per = (arr[(+percent) - 3] / 100) * arr[(+percent) - 1];
+            arr[(+percent) - 1] = per;
+            console.log(arr);
+
+            arr.splice(percent, 1);
+            console.log(per, arr);
+        }
+
+        let division = arr.indexOf("/");
+        if (division > -1) {
+            let div = arr[(+division) - 1] / arr[(+division) + 1];
+            arr[(+division) - 1] = div;
+            arr.splice(division, 2);
+            console.log(div, arr);
+        }
+
+        let multiplication = arr.indexOf("*");
+        if (multiplication > -1) {
+            let mult = arr[(+multiplication) - 1] * arr[(+multiplication) + 1];
+            arr[(+multiplication) - 1] = mult;
+            arr.splice(multiplication, 2);
+            console.log(mult, arr);
+        }
+
+        let minus = arr.indexOf("-");
+        if (minus > -1) {
+            let min = arr[(+minus) - 1] - arr[(+minus) + 1];
+            arr[(+minus) - 1] = min;
+            arr.splice(minus, 2);
+            console.log(min, arr);
+        }
+
+        let plus = arr.indexOf("+");
+        if (plus > -1) {
+            let pl = arr[(+plus) - 1] + arr[(+plus) + 1];
+            arr[(+plus) - 1] = pl;
+            arr.splice(plus, 2);
+            console.log(pl, arr);
+        }
+
+        return operate(arr, arr.length - 2);
     }
 </script>
 
