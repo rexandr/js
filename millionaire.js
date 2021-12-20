@@ -67,3 +67,5 @@ let arr = [
     ['question 1', 'answer1', 'answer2', 'answer3', 'answer4'],
     ['question 2', 'answer5', 'answer6', 'answer7', 'answer8']
             ]
+
+//delete question  after using      delete arr.question

@@ -6,45 +6,59 @@
 </head>
 <body>
 <a href="index.html">HOME</a><br>
-<input type="text" name="" id="trash" value="1+2+3"><br>
+<input type="text" name="" id="trash"><br>
 <button onclick="calculate()">CALCULATE</button>
 
 <script>
-    let str = document.body.querySelector('#trash');
-    let len = str.value.length;
-    let elem = str.value.split('');
-    let i= 0;
+    //let str = document.body.querySelector('#trash');
+    // let len = str.value.length;
+    // let elem = str.value.split('');
+    // let i= 0;
 
 
     function calculate()
     {
-        let a = 0;
-        let b = 0;
-        let c = '';
 
-        for (let i=0; i<str.value.length+2; i++)
-        {
-            //Number.isNaN(+ elem[i]) ? c = elem[i] : a =  +elem[i];
-
-            if (!Number.isNaN(+ elem[i]))   //elem[i]>=0
-            {
-                a = +elem[i];
-            }else{
-                c = elem[i];
-            }
-
-            if (a > 0 && c !=='')
-            {
-                b =+ a;
-                a = 0;
-                c = '';
-            }
-
-            console.log('a = ' + a + 'b = ' + b + 'c = ' +c, '----' + typeof a + typeof b + typeof c);
-        }
+        let str = document.body.querySelector('#trash');
+        let len = str.value;
 
 
-        console.log(b);
+
+        // let a = 0;
+        // let b = 0;
+        // let c = '';
+        //
+        // for (let i=0; i<str.value.length; i++) //str.value.lengt+2
+        // {
+        //     Number.isNaN(+ elem[i]) ? c += elem[i] : c +=  +elem[i];
+        //
+        //     // if (!Number.isNaN(+ elem[i]))   //elem[i]>=0
+        //     // {
+        //     //     a = +elem[i];
+        //     // }else{
+        //     //     c = elem[i];
+        //     // }
+        //     //
+        //     // if (a > 0 && c !=='')
+        //     // {
+        //     //     b =+ a;
+        //     //     a = 0;
+        //     //     c = '';
+        //     // }
+        //     //
+        //     // console.log('a = ' + a + 'b = ' + b + 'c = ' +c, '----' + typeof a + typeof b + typeof c);
+        // }
+
+        // number = arr[0] + arr[1] + arr[2]....
+        // elem = [number, operation, number, operation, .....]
+
+        //result = var1||var2||var3
+
+        //parseInt - читають строку до помилки і видають число яке знайшли, обрізати і знову парсити, формувати масив...
+
+        //str.indexOf(substr, pos) - find substring from pos
+
+        console.log(len, eval(len));  //`${+elem[0]  + elem[1] +  +elem[2]}`
     }
 </script>
 
