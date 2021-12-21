@@ -1,5 +1,10 @@
 function start()
 {
+
+    //правильну відповідь позачати, а при виводі позначку видаляти
+    //при виводі питання видаляти його з масиву.
+    //перепитати чи дісно використати підказку
+
     document.querySelector('#start').remove();
 
     let friend = document.createElement("button");
