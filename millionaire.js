@@ -3,6 +3,7 @@ function start() {
     //правильну відповідь позачати, а при виводі позначку видаляти
     //при виводі питання видаляти його з масиву.
     //перепитати чи дісно використати підказку
+    //if answer is right than increase a global variable and set price to another global value according to price-array's index.
 
     //start button removing
     document.querySelector('#start').remove();
