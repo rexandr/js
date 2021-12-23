@@ -49,16 +49,17 @@
             console.log('\nval = ' + val + typeof val + val.length + '\nnum=' + num + typeof num + '\nnumLeng = ' + numLeng + '\ni = ' + i + '\narr = ' + arr);
     }while (val) ;
 
+    //if brackets exist
+    if (arr.indexOf("(")>-1){
+        if (arr.indexOf("%")>-1 && arr.indexOf("%")>4){
+           getPercents(arr);// ????????????????????????????????????????????????????????
+        }
+    }
+
+
         //count % if exist
     if (arr.indexOf("%")>-1 && arr.indexOf("%")>4){
-        let statementWithPercent = arr.splice(0,arr.indexOf("%")+1);
-        statementWithPercent.pop();
-        let percentIndicator = statementWithPercent.splice(-1,1);
-        statementWithPercent.pop();
-        let beforePercentTake = operate(statementWithPercent, statementWithPercent.length);
-        let result = beforePercentTake + ((beforePercentTake*percentIndicator)/100)
-        arr.unshift(result);
-        console.log('@@@@'+arr, 'stat'+statementWithPercent, 'indicator' + percentIndicator, 'before'+beforePercentTake, 'result'+result);  //, operate(statementWithPercent, statementWithPercent.length)
+        getPercents(arr);
     }
 
 
@@ -69,23 +70,15 @@
 
 
     //percents counting
-    function getPercents(){
-        let percent = 0;
-        while (arr.indexOf("%")>-1) {
-            percent = arr.indexOf("%");
-            if (count === 2 && arr[1] === '%'){
-
-                return arr[0]/100;
-            }
-            console.log(arr);
-
-            let per = (arr[(+percent) - 3] / 100) * arr[(+percent) - 1];
-            arr[(+percent) - 1] = per;
-            console.log(arr);
-
-            arr.splice(percent, 1);
-            console.log(per, arr);
-        }
+    function getPercents(arr){
+        let statementWithPercent = arr.splice(0,arr.indexOf("%")+1);
+        statementWithPercent.pop();
+        let percentIndicator = statementWithPercent.splice(-1,1);
+        statementWithPercent.pop();
+        let beforePercentTake = operate(statementWithPercent, statementWithPercent.length);
+        let result = beforePercentTake + ((beforePercentTake*percentIndicator)/100)
+        arr.unshift(result);
+        //console.log('@@@@'+arr, 'stat'+statementWithPercent, 'indicator' + percentIndicator, 'before'+beforePercentTake, 'result'+result);
     }
 
 
