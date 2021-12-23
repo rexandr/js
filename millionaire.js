@@ -224,13 +224,13 @@ function fiftyFifty() {
 function finishGame(val) {
 
     if (val === 'stop'){
-        alert(`Game over! Your win is ${prices[k-1]}`);
+        alert(`Game over! Your win is ${prices[k-1]||0}`);
         location.reload();
     } else if(val === 'win') {
         alert('You are the WINNER!');
         location.reload();
     }else{
-        alert(`Game over! Your win is ${userWin}`);
+        alert(`Game over! Your win is ${userWin||0}`);
         location.reload();
     }
 
