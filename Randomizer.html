@@ -18,34 +18,67 @@ COUNT<input type="number" id="counter" value="8"><br>
 
 <script>
 
-    //check count > to-from;
-    //fom array with values from-to then random and delete taken value
     //set.add() while array with length = count will be filled      // what way would be faster?
+    //sort output array
 
     function generate() {
         let ul1 = document.querySelector("ul");
         let from = document.body.querySelector('#from');
         let to = document.body.querySelector('#to');
         let counter = document.body.querySelector('#counter');
-       // let arr = [];
 
+        //clear previous li
         while (document.querySelector("li"))
         {
             document.querySelector("li").remove();
         }
 
+        //checking if count > range - reload
+        let range = (+to.value) - (+from.value);
+        if (counter.value>=range){
+            alert("There no sens to generate!");
+            location.reload();
+            return false;
+        }
+
+        //fill array with values from - to
+        let interval = [];
+        let iter = +from.value;
+        for (let i=0; i<= range; i++){
+            interval.push(iter);
+            iter++;
+        }
+
+        //console.log(interval);
+
+
+        //values generations and li setting
         for (let i = 0; i < counter.value; i++)
         {
-            let ran = (+from.value) + Math.random() * ((+to.value)+1-(+from.value));
+            let ran;
+            ran = Math.random() * (interval.length+1);
             ran = Math.floor(ran);
-            //arr[i] = Math.floor(ran);
-            //console.log(arr, counter, ran);
-
             let elem = document.createElement("li");
-            let elemText = document.createTextNode(ran);
+            let elemText = document.createTextNode(interval[ran]);
             elem.appendChild(elemText);
             ul1.appendChild(elem);
+            interval.splice(ran,1);      //remove checked value
+            console.log(interval, interval.length);
         }
+
+        // for (let i = 0; i < counter.value; i++)             //old code for example
+        // {
+        //     let ran = (+from.value) + Math.random() * ((+to.value)+1-(+from.value));
+        //     ran = Math.floor(ran);
+        //     //arr[i] = Math.floor(ran);
+        //     //console.log(arr, counter, ran);
+        //
+        //     let elem = document.createElement("li");
+        //     let elemText = document.createTextNode(ran);
+        //     elem.appendChild(elemText);
+        //     ul1.appendChild(elem);
+        // }
+
     }
 
 </script>
