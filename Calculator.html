@@ -3,20 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <title>Calculator</title>
+    <style>
+        button {
+            width: 50px;
+        }
+
+        input {
+            width: 220px;
+        }
+    </style>
 </head>
 <body>
 <a href="index.html">HOME</a><br>
-<input type="text" name="" id="trash" value="5+10+50%+9"><br>
-<button onclick="calculate()">CALCULATE</button>
+<input type="text" name="" id="trash" value="5+10+(5+20)+50%+9+(4+7)+50%"><br>
+<!--<button onclick="calculate()">CALCULATE</button>-->
+<table border="2px">
+
+    <tr>
+        <td>
+            <button onclick="typeS('(')">(</button>
+        </td>
+        <td>
+            <button onclick="typeS(')')">)</button>
+        </td>
+        <td>
+            <button onclick="eraseS()"><</button>
+        </td>
+        <td>
+            <button onclick="delS()">Del</button>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <button onclick="typeS('7')">7</button>
+        </td>
+        <td>
+            <button onclick="typeS('8')">8</button>
+        </td>
+        <td>
+            <button onclick="typeS('9')">9</button>
+        </td>
+        <td>
+            <button onclick="typeS('/')">/</button>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <button onclick="typeS('4')">4</button>
+        </td>
+        <td>
+            <button onclick="typeS('5')">5</button>
+        </td>
+        <td>
+            <button onclick="typeS('6')">6</button>
+        </td>
+        <td>
+            <button onclick="typeS('*')">*</button>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <button onclick="typeS('1')">1</button>
+        </td>
+        <td>
+            <button onclick="typeS('2')">2</button>
+        </td>
+        <td>
+            <button onclick="typeS('3')">3</button>
+        </td>
+        <td>
+            <button onclick="typeS('-')">-</button>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <button onclick="typeS('%')">%</button>
+        </td>
+        <td>
+            <button onclick="typeS('0')">0</button>
+        </td>
+        <td>
+            <button onclick="calculate()">=</button>
+        </td>
+        <td>
+            <button onclick="typeS('+')">+</button>
+        </td>
+
+    </tr>
+
+</table>
 
 <script>
 
-    //_________________________________________________прогнати спочатку одну дію, вдруг там два ділення
- //____________________________________________________з дужками  - розпарсити дужки в масив,вирізати масив по дужках, якщо є,
- // ___________________________________________________прогнати через рекурсію і вставити цифру
- // ___________________________________________________в остаток першого масиву, а далі знову в рекурсію
+
+    function typeS(sign) {
+        let pT = document.querySelector('#trash');
+        pT.value = pT.value + sign;
+    }
+
+    function eraseS() {
+        let pT = document.querySelector('#trash');
+        pT.value = pT.value.slice(0, -1);
+    }
+
+    function delS() {
+        let del = document.querySelector('#trash');
+        del.value = '';
+    }
+
     //_________________________________________________split() divide string to array with letters
-    //_________________________________________________percents takes from sum of all elements to the left/ we have to find% and set to the function all what are to the left
 
     function calculate() {
 
@@ -27,58 +126,98 @@
 
         //string to array
         do {
-            console.log('________' + i, val);
+
+            // //spaces deleting
+            // for (i = 0; i<val.length; i++){
+            //     if (val[i] === ' '){
+            //         val[i].splice(1);
+            //     }
+            // }
+
+
             let num = parseInt(val);
             arr[i] = num;
             i++;
             let numLeng = num.toString().length;
             val = val.slice(numLeng);
+            //console.log(val);
 
-            if (val[0] === '%') {
+            if (val[0] === ' ') {
+                val = val.slice(1);
+            }
+
+            //checking for additional symbols
+            if (val[0] === '%' || val[0] === ')') {
                 arr[i] = val[0];
                 i++;
                 val = val.slice(1);
             }
-            console.log(i, val[0]);
+
+
+            //console.log(i, val[0]);
 
             if (val.length > 0) {
                 arr[i] = val[0]
                 i++;
                 val = val.slice(1);
             }
-            console.log('\nval = ' + val + typeof val + val.length + '\nnum=' + num + typeof num + '\nnumLeng = ' + numLeng + '\ni = ' + i + '\narr = ' + arr);
-    }while (val) ;
 
-    //if brackets exist
-    if (arr.indexOf("(")>-1){
-        if (arr.indexOf("%")>-1 && arr.indexOf("%")>4){
-           getPercents(arr);// ????????????????????????????????????????????????????????
+            if (val[0] === '(') {
+                arr[i] = val[0]
+                i++;
+                val = val.slice(1);
+            }
+            //console.log('\nval = ' + val + typeof val + val.length + '\nnum=' + num + typeof num + '\nnumLeng = ' + numLeng + '\ni = ' + i + '\narr = ' + arr);
+        } while (val) ;
+        
+        console.log('total' + arr);
+        
+        
+        //count in brackets
+        while (arr.indexOf("(") > -1) {
+            countInBrackets(arr);
+        }
+
+        //count % if exist
+        while (arr.indexOf("%") > -1) {
+            getPercents(arr);
+        }
+
+        let counter = operate(arr, arr.length)
+
+        alert('Result = ' + counter.toFixed(2));
+    }
+
+    //percents counting
+    function getPercents(arr) {
+        console.log('percent' + arr);
+
+        if (arr.indexOf("%") > -1 && arr.indexOf("%") > 4) {
+            let statementWithPercent = arr.splice(0, arr.indexOf("%") + 1);
+            statementWithPercent.pop();
+            let percentIndicator = statementWithPercent.splice(-1, 1);
+            statementWithPercent.pop();
+            let beforePercentTake = operate(statementWithPercent, statementWithPercent.length);
+            let result = beforePercentTake + ((beforePercentTake * percentIndicator) / 100)
+            arr.unshift(result);
         }
     }
 
-
-        //count % if exist
-    if (arr.indexOf("%")>-1 && arr.indexOf("%")>4){
-        getPercents(arr);
-    }
-
-
-    let counter = operate(arr,arr.length)
-
-    alert('Result = ' + counter.toFixed(2));
-    }
-
-
-    //percents counting
-    function getPercents(arr){
-        let statementWithPercent = arr.splice(0,arr.indexOf("%")+1);
-        statementWithPercent.pop();
-        let percentIndicator = statementWithPercent.splice(-1,1);
-        statementWithPercent.pop();
-        let beforePercentTake = operate(statementWithPercent, statementWithPercent.length);
-        let result = beforePercentTake + ((beforePercentTake*percentIndicator)/100)
-        arr.unshift(result);
-        //console.log('@@@@'+arr, 'stat'+statementWithPercent, 'indicator' + percentIndicator, 'before'+beforePercentTake, 'result'+result);
+    //count in brackets
+    function countInBrackets(arr) {
+        //if (arr.indexOf("(") > -1) {
+            let firstBracket = arr.indexOf("("); //console.log(firstBracket);
+            let inBrackets = arr.splice(arr.indexOf("(") + 1, arr.indexOf(")") - arr.indexOf("(")); //console.log(inBrackets);
+            inBrackets.pop();
+            // if (inBrackets.indexOf("(") > -1) {
+            //     countInBrackets(inBrackets);
+            // }
+            console.log('In Brackets = '+inBrackets);
+            getPercents(inBrackets);
+            arr[firstBracket] = operate(inBrackets, inBrackets.length);
+            //console.log('Arr = ' + arr + '\nfirstBRACKETS = ' + firstBracket, '\nIn brackets = ' + inBrackets, '\nCountBrackets' + countFromBrackets);
+        //}
+        //return arr;
     }
 
 
@@ -88,43 +227,6 @@
         if (count <= 0) {
             return arr[0];
         }
-        // //percents second variant
-        // let percent = 0;
-        // while (arr.indexOf("%")>-1) {
-        //     percent = arr.indexOf("%");
-        //     if (count === 2 && arr[1] === '%'){
-        //
-        //         return arr[0]/100;
-        //     }
-        //     console.log(arr);
-        //
-        //     let per = (arr[(+percent) - 3] / 100) * arr[(+percent) - 1];
-        //     arr[(+percent) - 1] = per;
-        //     console.log(arr);
-        //
-        //     arr.splice(percent, 1);
-        //     console.log(per, arr);
-        // }
-
-        // percents first variant
-        // let percent = arr.indexOf("%");
-        // if (percent > -1) {
-        //
-        //     if (count === 2 && arr[1] === '%'){
-        //
-        //         return arr[0]/100;
-        //     }
-        //     console.log(arr);
-        //
-        //     let per = (arr[(+percent) - 3] / 100) * arr[(+percent) - 1];
-        //     arr[(+percent) - 1] = per;
-        //     console.log(arr);
-        //
-        //     arr.splice(percent, 1);
-        //     console.log(per, arr);
-        // }
-
-
 
         let division = 0;
         while (arr.indexOf("/") > -1) {
@@ -132,16 +234,14 @@
             let div = arr[(+division) - 1] / arr[(+division) + 1];
             arr[(+division) - 1] = div;
             arr.splice(division, 2);
-            console.log(div, arr);
         }
 
         let multiplication = 0;
-        while(arr.indexOf("*") > -1) {
+        while (arr.indexOf("*") > -1) {
             multiplication = arr.indexOf("*");
             let mult = arr[(+multiplication) - 1] * arr[(+multiplication) + 1];
             arr[(+multiplication) - 1] = mult;
             arr.splice(multiplication, 2);
-            console.log(mult, arr);
         }
 
         let minus = 0;
@@ -150,7 +250,6 @@
             let min = arr[(+minus) - 1] - arr[(+minus) + 1];
             arr[(+minus) - 1] = min;
             arr.splice(minus, 2);
-            console.log(min, arr);
         }
 
         let plus = arr.indexOf("+");
@@ -158,7 +257,6 @@
             let pl = arr[(+plus) - 1] + arr[(+plus) + 1];
             arr[(+plus) - 1] = pl;
             arr.splice(plus, 2);
-            console.log(pl, arr);
         }
 
         return operate(arr, arr.length - 2);
