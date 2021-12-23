@@ -49,21 +49,17 @@ COUNT<input type="number" id="counter" value="8"><br>
             iter++;
         }
 
-        //console.log(interval);
-
-
         //values generations and li setting
         for (let i = 0; i < counter.value; i++)
         {
             let ran;
-            ran = Math.random() * (interval.length+1);
+            ran = Math.random() * (interval.length);
             ran = Math.floor(ran);
             let elem = document.createElement("li");
             let elemText = document.createTextNode(interval[ran]);
             elem.appendChild(elemText);
             ul1.appendChild(elem);
             interval.splice(ran,1);      //remove checked value
-            console.log(interval, interval.length);
         }
 
         // for (let i = 0; i < counter.value; i++)             //old code for example
