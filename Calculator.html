@@ -16,6 +16,8 @@
  // ___________________________________________________прогнати через рекурсію і вставити цифру
  // ___________________________________________________в остаток першого масиву, а далі знову в рекурсію
     //_________________________________________________split() divide string to array with letters
+    //_________________________________________________percents takes from sum of all elements to the left/ we have to find% and set to the function all what are to the left
+
     function calculate() {
 
         let str = document.body.querySelector('#trash');
@@ -23,9 +25,7 @@
         let arr = [];
         let i = 0;
 
-        //console.log(eval(val));                         ))))))))))))))))))))))))
-
-
+        //string to array
         do {
             console.log('________' + i, val);
             let num = parseInt(val);
@@ -49,20 +49,30 @@
             console.log('\nval = ' + val + typeof val + val.length + '\nnum=' + num + typeof num + '\nnumLeng = ' + numLeng + '\ni = ' + i + '\narr = ' + arr);
     }while (val) ;
 
-    let counter = operate(arr,arr.length)
-
-    alert(counter.toFixed(2));
+        //count % if exist
+    if (arr.indexOf("%")>-1 && arr.indexOf("%")>4){
+        let statementWithPercent = arr.splice(0,arr.indexOf("%")+1);
+        statementWithPercent.pop();
+        let percentIndicator = statementWithPercent.splice(-1,1);
+        statementWithPercent.pop();
+        let beforePercentTake = operate(statementWithPercent, statementWithPercent.length);
+        let result = beforePercentTake + ((beforePercentTake*percentIndicator)/100)
+        arr.unshift(result);
+        console.log('@@@@'+arr, 'stat'+statementWithPercent, 'indicator' + percentIndicator, 'before'+beforePercentTake, 'result'+result);  //, operate(statementWithPercent, statementWithPercent.length)
     }
 
-    function operate(arr, count) {
 
-        if (count <= 0) {
-            return arr[0];
-        }
+    let counter = operate(arr,arr.length)
 
-        let percent = arr.indexOf("%");
-        if (percent > -1) {
+    alert('Result = ' + counter.toFixed(2));
+    }
 
+
+    //percents counting
+    function getPercents(){
+        let percent = 0;
+        while (arr.indexOf("%")>-1) {
+            percent = arr.indexOf("%");
             if (count === 2 && arr[1] === '%'){
 
                 return arr[0]/100;
@@ -76,25 +86,74 @@
             arr.splice(percent, 1);
             console.log(per, arr);
         }
+    }
 
-        let division = arr.indexOf("/");
-        if (division > -1) {
+
+    //commit all operations according to execution queue
+    function operate(arr, count) {
+
+        if (count <= 0) {
+            return arr[0];
+        }
+        // //percents second variant
+        // let percent = 0;
+        // while (arr.indexOf("%")>-1) {
+        //     percent = arr.indexOf("%");
+        //     if (count === 2 && arr[1] === '%'){
+        //
+        //         return arr[0]/100;
+        //     }
+        //     console.log(arr);
+        //
+        //     let per = (arr[(+percent) - 3] / 100) * arr[(+percent) - 1];
+        //     arr[(+percent) - 1] = per;
+        //     console.log(arr);
+        //
+        //     arr.splice(percent, 1);
+        //     console.log(per, arr);
+        // }
+
+        // percents first variant
+        // let percent = arr.indexOf("%");
+        // if (percent > -1) {
+        //
+        //     if (count === 2 && arr[1] === '%'){
+        //
+        //         return arr[0]/100;
+        //     }
+        //     console.log(arr);
+        //
+        //     let per = (arr[(+percent) - 3] / 100) * arr[(+percent) - 1];
+        //     arr[(+percent) - 1] = per;
+        //     console.log(arr);
+        //
+        //     arr.splice(percent, 1);
+        //     console.log(per, arr);
+        // }
+
+
+
+        let division = 0;
+        while (arr.indexOf("/") > -1) {
+            division = arr.indexOf("/");
             let div = arr[(+division) - 1] / arr[(+division) + 1];
             arr[(+division) - 1] = div;
             arr.splice(division, 2);
             console.log(div, arr);
         }
 
-        let multiplication = arr.indexOf("*");
-        if (multiplication > -1) {
+        let multiplication = 0;
+        while(arr.indexOf("*") > -1) {
+            multiplication = arr.indexOf("*");
             let mult = arr[(+multiplication) - 1] * arr[(+multiplication) + 1];
             arr[(+multiplication) - 1] = mult;
             arr.splice(multiplication, 2);
             console.log(mult, arr);
         }
 
-        let minus = arr.indexOf("-");
-        if (minus > -1) {
+        let minus = 0;
+        while (arr.indexOf("-") > -1) {
+            minus = arr.indexOf("-");
             let min = arr[(+minus) - 1] - arr[(+minus) + 1];
             arr[(+minus) - 1] = min;
             arr.splice(minus, 2);
