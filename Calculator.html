@@ -27,10 +27,10 @@
             <button onclick="typeS(')')">)</button>
         </td>
         <td>
-            <button onclick="eraseS()"><</button>
+            <button onclick="eraseS()">Del</button>
         </td>
         <td>
-            <button onclick="delS()">Del</button>
+            <button onclick="typeS('%')">%</button>
         </td>
     </tr>
 
@@ -81,7 +81,7 @@
 
     <tr>
         <td>
-            <button onclick="typeS('%')">%</button>
+            <button onclick="typeS('.')">.</button>
         </td>
         <td>
             <button onclick="typeS('0')">0</button>
@@ -135,7 +135,7 @@
             // }
 
 
-            let num = parseInt(val);
+            let num = parseFloat(val);
             arr[i] = num;
             i++;
             let numLeng = num.toString().length;
@@ -186,6 +186,7 @@
         let counter = operate(arr, arr.length)
 
         alert('Result = ' + counter.toFixed(2));
+        delS();
     }
 
     //percents counting
