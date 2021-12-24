@@ -11,92 +11,104 @@
         input {
             width: 220px;
         }
+
+        body{
+        }
+
+        div{
+            position: fixed;
+            top: 30%;
+            left: 40%;
+            /*text-align: center;*/
+            width: 232px;
+        }
     </style>
 </head>
 <body>
 <a href="index.html">HOME</a><br>
-<input type="text" name="" id="trash" value="5+10+(5+20)+50%+9+(4+7)+50%"><br>
-<!--<button onclick="calculate()">CALCULATE</button>-->
-<table border="2px">
+<div>
+    <input type="text" name="" id="trash" value="5+10+(5+20)+50%+9+(4+7)+50%"><br>
+    <!--<button onclick="calculate()">CALCULATE</button>-->
+    <table border="2px">
 
-    <tr>
-        <td>
-            <button onclick="typeS('(')">(</button>
-        </td>
-        <td>
-            <button onclick="typeS(')')">)</button>
-        </td>
-        <td>
-            <button onclick="eraseS()">Del</button>
-        </td>
-        <td>
-            <button onclick="typeS('%')">%</button>
-        </td>
-    </tr>
+        <tr>
+            <td>
+                <button onclick="typeS('(')">(</button>
+            </td>
+            <td>
+                <button onclick="typeS(')')">)</button>
+            </td>
+            <td>
+                <button onclick="eraseS()">Del</button>
+            </td>
+            <td>
+                <button onclick="typeS('%')">%</button>
+            </td>
+        </tr>
 
-    <tr>
-        <td>
-            <button onclick="typeS('7')">7</button>
-        </td>
-        <td>
-            <button onclick="typeS('8')">8</button>
-        </td>
-        <td>
-            <button onclick="typeS('9')">9</button>
-        </td>
-        <td>
-            <button onclick="typeS('/')">/</button>
-        </td>
-    </tr>
+        <tr>
+            <td>
+                <button onclick="typeS('7')">7</button>
+            </td>
+            <td>
+                <button onclick="typeS('8')">8</button>
+            </td>
+            <td>
+                <button onclick="typeS('9')">9</button>
+            </td>
+            <td>
+                <button onclick="typeS('/')">/</button>
+            </td>
+        </tr>
 
-    <tr>
-        <td>
-            <button onclick="typeS('4')">4</button>
-        </td>
-        <td>
-            <button onclick="typeS('5')">5</button>
-        </td>
-        <td>
-            <button onclick="typeS('6')">6</button>
-        </td>
-        <td>
-            <button onclick="typeS('*')">*</button>
-        </td>
-    </tr>
+        <tr>
+            <td>
+                <button onclick="typeS('4')">4</button>
+            </td>
+            <td>
+                <button onclick="typeS('5')">5</button>
+            </td>
+            <td>
+                <button onclick="typeS('6')">6</button>
+            </td>
+            <td>
+                <button onclick="typeS('*')">*</button>
+            </td>
+        </tr>
 
-    <tr>
-        <td>
-            <button onclick="typeS('1')">1</button>
-        </td>
-        <td>
-            <button onclick="typeS('2')">2</button>
-        </td>
-        <td>
-            <button onclick="typeS('3')">3</button>
-        </td>
-        <td>
-            <button onclick="typeS('-')">-</button>
-        </td>
-    </tr>
+        <tr>
+            <td>
+                <button onclick="typeS('1')">1</button>
+            </td>
+            <td>
+                <button onclick="typeS('2')">2</button>
+            </td>
+            <td>
+                <button onclick="typeS('3')">3</button>
+            </td>
+            <td>
+                <button onclick="typeS('-')">-</button>
+            </td>
+        </tr>
 
-    <tr>
-        <td>
-            <button onclick="typeS('.')">.</button>
-        </td>
-        <td>
-            <button onclick="typeS('0')">0</button>
-        </td>
-        <td>
-            <button onclick="calculate()">=</button>
-        </td>
-        <td>
-            <button onclick="typeS('+')">+</button>
-        </td>
+        <tr>
+            <td>
+                <button onclick="typeS('.')">.</button>
+            </td>
+            <td>
+                <button onclick="typeS('0')">0</button>
+            </td>
+            <td>
+                <button onclick="calculate()">=</button>
+            </td>
+            <td>
+                <button onclick="typeS('+')">+</button>
+            </td>
 
-    </tr>
+        </tr>
 
-</table>
-
+    </table>
+</div>
 <script>
 
 
@@ -169,10 +181,10 @@
             }
             //console.log('\nval = ' + val + typeof val + val.length + '\nnum=' + num + typeof num + '\nnumLeng = ' + numLeng + '\ni = ' + i + '\narr = ' + arr);
         } while (val) ;
-        
+
         console.log('total' + arr);
-        
-        
+
+
         //count in brackets
         while (arr.indexOf("(") > -1) {
             countInBrackets(arr);
@@ -186,7 +198,7 @@
         let counter = operate(arr, arr.length)
 
         alert('Result = ' + counter.toFixed(2));
-        delS();
+        //delS();
     }
 
     //percents counting
@@ -207,16 +219,16 @@
     //count in brackets
     function countInBrackets(arr) {
         //if (arr.indexOf("(") > -1) {
-            let firstBracket = arr.indexOf("("); //console.log(firstBracket);
-            let inBrackets = arr.splice(arr.indexOf("(") + 1, arr.indexOf(")") - arr.indexOf("(")); //console.log(inBrackets);
-            inBrackets.pop();
-            // if (inBrackets.indexOf("(") > -1) {
-            //     countInBrackets(inBrackets);
-            // }
-            console.log('In Brackets = '+inBrackets);
-            getPercents(inBrackets);
-            arr[firstBracket] = operate(inBrackets, inBrackets.length);
-            //console.log('Arr = ' + arr + '\nfirstBRACKETS = ' + firstBracket, '\nIn brackets = ' + inBrackets, '\nCountBrackets' + countFromBrackets);
+        let firstBracket = arr.indexOf("("); //console.log(firstBracket);
+        let inBrackets = arr.splice(arr.indexOf("(") + 1, arr.indexOf(")") - arr.indexOf("(")); //console.log(inBrackets);
+        inBrackets.pop();
+        // if (inBrackets.indexOf("(") > -1) {
+        //     countInBrackets(inBrackets);
+        // }
+        console.log('In Brackets = ' + inBrackets);
+        getPercents(inBrackets);
+        arr[firstBracket] = operate(inBrackets, inBrackets.length);
+        //console.log('Arr = ' + arr + '\nfirstBRACKETS = ' + firstBracket, '\nIn brackets = ' + inBrackets, '\nCountBrackets' + countFromBrackets);
         //}
         //return arr;
     }
