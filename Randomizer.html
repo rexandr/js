@@ -28,30 +28,43 @@ COUNT<input type="number" id="counter" value="8"><br>
         let counter = document.body.querySelector('#counter');
 
         //clear previous li
-        while (document.querySelector("li"))
-        {
+        while (document.querySelector("li")) {
             document.querySelector("li").remove();
         }
 
+        let range = validateData(from, to, counter);
+
+        let interval = fillArrayFromTo(from, range);
+
+        buildValuesList(counter, interval, ul1);
+
+    }
+
+    function validateData(from, to, counter) {
         //checking if count > range - reload
         let range = (+to.value) - (+from.value);
-        if (counter.value>=range){
+        if (counter.value >= range) {
             alert("There no sens to generate!");
             location.reload();
             return false;
         }
+        return range;
+    }
 
+    function fillArrayFromTo(from, range) {
         //fill array with values from - to
         let interval = [];
         let iter = +from.value;
-        for (let i=0; i<= range; i++){
+        for (let i = 0; i <= range; i++) {
             interval.push(iter);
             iter++;
         }
+        return interval;
+    }
 
+    function buildValuesList(counter, interval, ul1) {
         //values generations and li setting
-        for (let i = 0; i < counter.value; i++)
-        {
+        for (let i = 0; i < counter.value; i++) {
             let ran;
             ran = Math.random() * (interval.length);
             ran = Math.floor(ran);
@@ -59,23 +72,22 @@ COUNT<input type="number" id="counter" value="8"><br>
             let elemText = document.createTextNode(interval[ran]);
             elem.appendChild(elemText);
             ul1.appendChild(elem);
-            interval.splice(ran,1);      //remove checked value
+            interval.splice(ran, 1);      //remove checked value
         }
-
-        // for (let i = 0; i < counter.value; i++)             //old code for example
-        // {
-        //     let ran = (+from.value) + Math.random() * ((+to.value)+1-(+from.value));
-        //     ran = Math.floor(ran);
-        //     //arr[i] = Math.floor(ran);
-        //     //console.log(arr, counter, ran);
-        //
-        //     let elem = document.createElement("li");
-        //     let elemText = document.createTextNode(ran);
-        //     elem.appendChild(elemText);
-        //     ul1.appendChild(elem);
-        // }
-
     }
+
+    // for (let i = 0; i < counter.value; i++) //old code for example without unique value
+    // {
+    //     let ran = (+from.value) + Math.random() * ((+to.value)+1-(+from.value));
+    //     ran = Math.floor(ran);
+    //     //arr[i] = Math.floor(ran);
+    //     //console.log(arr, counter, ran);
+    //
+    //     let elem = document.createElement("li");
+    //     let elemText = document.createTextNode(ran);
+    //     elem.appendChild(elemText);
+    //     ul1.appendChild(elem);
+    // }
 
 </script>
 
