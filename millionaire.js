@@ -66,21 +66,7 @@ function showNextQuestion(level) {
 
     }
 
-    //question's difficulties changing
-    let arr = [];
-    if (k <= 4) {
-
-        arr = answersAll[0];
-
-    } else if (k > 4 && k <= 9) {
-
-        arr = answersAll[1];
-
-    } else {
-
-        arr = answersAll[2];
-
-    }
+    let arr = changeDifficulty(k);
 
 
     //Question finding
@@ -162,6 +148,26 @@ function fiftyFifty() {
         document.querySelector('.wrong').remove();
         document.querySelector('#fifty').remove();
     }
+}
+
+function changeDifficulty(k){
+    //question's difficulties changing
+    let arr = [];
+    if (k <= 4) {
+
+        arr = answersAll[0];
+
+    } else if (k > 4 && k <= 9) {
+
+        arr = answersAll[1];
+
+    } else {
+
+        arr = answersAll[2];
+
+    }
+
+    return arr;
 }
 
 //finishing game when user wrong, stopped game or won the game.
