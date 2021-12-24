@@ -80,7 +80,7 @@ function showNextQuestion(level) {
     let shownQuestion = document.createElement("label");
     document.body.appendChild(shownQuestion);
     shownQuestion.setAttribute('id', 'lable');
-    shownQuestion.innerText = arr[+questionPosition][0];
+    shownQuestion.innerText = 'Вопрос №' + (+k+1) + ' - ' + ' ' + arr[+questionPosition][0];
 
     //table with answers
     let table = document.querySelector('table');
@@ -124,7 +124,6 @@ function showNextQuestion(level) {
 
     //delete shown question
     arr.splice(questionPosition, 1);
-    //console.log(arr);
 
 }
 

@@ -22,6 +22,8 @@
             /*text-align: center;*/
             width: 232px;
         }
+
+        alert
     </style>
 </head>
 <body>
@@ -133,9 +135,28 @@
 
         let str = document.body.querySelector('#trash');
         let val = str.value;
+        let arr = parseExp(val);
+
+        //count in brackets
+        while (arr.indexOf("(") > -1) {
+            countInBrackets(arr);
+        }
+
+        //count % if exist
+        while (arr.indexOf("%") > -1) {
+            getPercents(arr);
+        }
+
+        let counter = operate(arr, arr.length)
+
+        alert('Result = ' + counter.toFixed(2));
+        //delS();
+    }
+
+    function parseExp(val) {
+
         let arr = [];
         let i = 0;
-
         //string to array
         do {
 
@@ -145,7 +166,6 @@
             //         val[i].splice(1);
             //     }
             // }
-
 
             let num = parseFloat(val);
             arr[i] = num;
@@ -182,23 +202,7 @@
             //console.log('\nval = ' + val + typeof val + val.length + '\nnum=' + num + typeof num + '\nnumLeng = ' + numLeng + '\ni = ' + i + '\narr = ' + arr);
         } while (val) ;
 
-        console.log('total' + arr);
-
-
-        //count in brackets
-        while (arr.indexOf("(") > -1) {
-            countInBrackets(arr);
-        }
-
-        //count % if exist
-        while (arr.indexOf("%") > -1) {
-            getPercents(arr);
-        }
-
-        let counter = operate(arr, arr.length)
-
-        alert('Result = ' + counter.toFixed(2));
-        //delS();
+        return arr;
     }
 
     //percents counting
